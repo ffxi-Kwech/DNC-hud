@@ -1,9 +1,7 @@
 # DNC-hud
-Put this folder in your addons folder and load with main job DNC. The large rose is your Flourishes3 recast. When up, the flower is bright red. 
+Make a folder in your Windower\addons called DNC-hud and put this lua and the assets folder in there. Load this addon with main job DNC by typing //lua l DNC-hud.
 
-When down it is less visible, and a small timer appears.
-
-The smaller flower is your Flourishes2 and works the same, except it doesn't have a smaller timer.
+The large rose is your Flourishes3 recast. When up, the flower is bright red. When down it is less visible, and a small timer appears. The smaller flower is your Flourishes2 and works the same, except it doesn't have a smaller timer.
 
 Lastly, the FMs will be displayed in yellow. The game does not distinguish between FMs 6-9, so you will see 5+ if you have
 greater than 5 FMs.
