@@ -1,6 +1,6 @@
 # DNC-hud
+Put this folder in your addons folder and load with main job DNC. The large rose is your Flourishes3 recast. When up, the flower is bright red. 
 
-Load this lua with main job DNC. The large rose is your Flourishes3 recast. When up, the flower is bright red. 
 When down it is less visible, and a small timer appears.
 
 The smaller flower is your Flourishes2 and works the same, except it doesn't have a smaller timer.
