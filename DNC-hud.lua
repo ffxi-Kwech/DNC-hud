@@ -39,8 +39,29 @@ local previous2 = 0
 local iPosition_x = 1500
 local iPosition_y = 300
 
+-- Define size variables
+local sizeScale = 1
+local stemWidth = 150
+local stemHeight = 300
+local flourishes3Width = 150
+local flourishes3Height = 150
+local flourishes2Width = 75
+local flourishes2Height = 75
+local FM1Width = 40
+local FM1Height = 50
+local FM2Width = 40
+local FM2Height = 50
+local FM3Width = 40
+local FM3Height = 50
+local FM4Width = 40
+local FM4Height = 50
+local FM5Width = 40
+local FM5Height = 50
+local FM6Width = 50
+local FM6Height = 50 -- Size for FM6 is different from the others
+
 texts.visible(timer3, false)
-texts.pos(timer3, iPosition_x + 100, iPosition_y + 115)
+texts.pos(timer3, (iPosition_x + 100) * sizeScale, (iPosition_y + 115) * sizeScale)
 texts.bg_alpha(timer3, 0)
 
 local vFM1 = 0
@@ -57,97 +78,99 @@ local mins = 0
 local secs = 0
 
 
-windower.register_event('load', function() 
-	
-	windower.prim.create('stem')	
-	windower.prim.set_color('stem', 255, 255, 255, 255)	
-	windower.prim.set_fit_to_texture('stem', false)
-	windower.prim.set_texture('stem', windower.addon_path .. 'assets/stem.png')
-	windower.prim.set_repeat('stem',1,1)
-    windower.prim.set_visibility('stem',true)
-	windower.prim.set_position('stem', iPosition_x, iPosition_y + 125)
-	windower.prim.set_size('stem', 150, 300)
-	
-	--Flourishes III or Large Rose
-	windower.prim.create('flourishes3')	
-	windower.prim.set_color('flourishes3', 255, 255, 255, 255)	
+windower.register_event('load', function()
+
+    -- Stem
+    windower.prim.create('stem')
+    windower.prim.set_color('stem', 255, 255, 255, 255)
+    windower.prim.set_fit_to_texture('stem', false)
+    windower.prim.set_texture('stem', windower.addon_path .. 'assets/stem.png')
+    windower.prim.set_repeat('stem', 1, 1)
+    windower.prim.set_visibility('stem', true)
+    windower.prim.set_position('stem', iPosition_x * sizeScale, (iPosition_y + 125) * sizeScale)
+    windower.prim.set_size('stem', stemWidth * sizeScale, stemHeight * sizeScale)
+
+	-- Flourishes III or Large Rose
+	windower.prim.create('flourishes3')
+	windower.prim.set_color('flourishes3', 255, 255, 255, 255)
 	windower.prim.set_fit_to_texture('flourishes3', false)
 	windower.prim.set_texture('flourishes3', windower.addon_path .. 'assets/rosehead.png')
-	windower.prim.set_repeat('flourishes3',1,1)
-    windower.prim.set_visibility('flourishes3',true)
-	windower.prim.set_position('flourishes3', iPosition_x, iPosition_y)
-	windower.prim.set_size('flourishes3', 150, 150)
+	windower.prim.set_repeat('flourishes3', 1, 1)
+	windower.prim.set_visibility('flourishes3', true)
+	windower.prim.set_position('flourishes3', iPosition_x * sizeScale, iPosition_y * sizeScale)
+	windower.prim.set_size('flourishes3', flourishes3Width * sizeScale, flourishes3Height * sizeScale)
 
-	--Flourishes II or Small Rose
-	windower.prim.create('flourishes2')	
-	windower.prim.set_color('flourishes2', 255, 255, 255, 255)	
+	-- Flourishes II or Small Rose
+	windower.prim.create('flourishes2')
+	windower.prim.set_color('flourishes2', 255, 255, 255, 255)
 	windower.prim.set_fit_to_texture('flourishes2', false)
 	windower.prim.set_texture('flourishes2', windower.addon_path .. 'assets/rosehead2.png')
-	windower.prim.set_repeat('flourishes2',1,1)
-    windower.prim.set_visibility('flourishes2',true)
-	windower.prim.set_position('flourishes2', iPosition_x + 60, iPosition_y + 250)
-	windower.prim.set_size('flourishes2', 75, 75)
+	windower.prim.set_repeat('flourishes2', 1, 1)
+	windower.prim.set_visibility('flourishes2', true)
+	windower.prim.set_position('flourishes2', (iPosition_x + 60) * sizeScale, (iPosition_y + 250) * sizeScale)
+	windower.prim.set_size('flourishes2', flourishes2Width * sizeScale, flourishes2Height * sizeScale)
 
-	--FMs 1
-	windower.prim.create('FM1')	
-	windower.prim.set_color('FM1', vFM1, vFM1, vFM1, vFM1)	
+	-- FM1
+	windower.prim.create('FM1')
+	windower.prim.set_color('FM1', vFM1, vFM1, vFM1, vFM1) -- Assuming default color; replace as necessary
 	windower.prim.set_fit_to_texture('FM1', false)
 	windower.prim.set_texture('FM1', windower.addon_path .. 'assets/FM1.png')
-	windower.prim.set_repeat('FM1',1,1)
-    windower.prim.set_visibility('FM1',true)
-	windower.prim.set_position('FM1', iPosition_x + 22, iPosition_y + 155)
-	windower.prim.set_size('FM1', 40, 50)
+	windower.prim.set_repeat('FM1', 1, 1)
+	windower.prim.set_visibility('FM1', true)
+	windower.prim.set_position('FM1', (iPosition_x + 22) * sizeScale, (iPosition_y + 155) * sizeScale)
+	windower.prim.set_size('FM1', FM1Width * sizeScale, FM1Height * sizeScale)
 
-	--FMs 2
-	windower.prim.create('FM2')	
-	windower.prim.set_color('FM2', vFM2, vFM2, vFM2, vFM2)	
+	-- FM2
+	windower.prim.create('FM2')
+	windower.prim.set_color('FM2', vFM2, vFM2, vFM2, vFM2)
 	windower.prim.set_fit_to_texture('FM2', false)
 	windower.prim.set_texture('FM2', windower.addon_path .. 'assets/FM2.png')
-	windower.prim.set_repeat('FM2',1,1)
-    windower.prim.set_visibility('FM2',true)
-	windower.prim.set_position('FM2', iPosition_x + 22, iPosition_y + 155)
-	windower.prim.set_size('FM2', 40, 50)
-	
-	--FMs 3
-	windower.prim.create('FM3')	
-	windower.prim.set_color('FM3', vFM3, vFM3, vFM3, vFM3)	
+	windower.prim.set_repeat('FM2', 1, 1)
+	windower.prim.set_visibility('FM2', true)
+	windower.prim.set_position('FM2', (iPosition_x + 22) * sizeScale, (iPosition_y + 155) * sizeScale)
+	windower.prim.set_size('FM2', FM2Width * sizeScale, FM2Height * sizeScale)
+
+	-- FM3
+	windower.prim.create('FM3')
+	windower.prim.set_color('FM3', vFM3, vFM3, vFM3, vFM3)
 	windower.prim.set_fit_to_texture('FM3', false)
 	windower.prim.set_texture('FM3', windower.addon_path .. 'assets/FM3.png')
-	windower.prim.set_repeat('FM3',1,1)
-    windower.prim.set_visibility('FM3',true)
-	windower.prim.set_position('FM3', iPosition_x + 22, iPosition_y + 155)
-	windower.prim.set_size('FM3', 40, 50)
-	
-	--FMs 4
-	windower.prim.create('FM4')	
-	windower.prim.set_color('FM4', vFM4, vFM4, vFM4, vFM4)	
+	windower.prim.set_repeat('FM3', 1, 1)
+	windower.prim.set_visibility('FM3', true)
+	windower.prim.set_position('FM3', (iPosition_x + 22) * sizeScale, (iPosition_y + 155) * sizeScale)
+	windower.prim.set_size('FM3', FM3Width * sizeScale, FM3Height * sizeScale)
+
+	-- FM4
+	windower.prim.create('FM4')
+	windower.prim.set_color('FM4', vFM4, vFM4, vFM4, vFM4)
 	windower.prim.set_fit_to_texture('FM4', false)
 	windower.prim.set_texture('FM4', windower.addon_path .. 'assets/FM4.png')
-	windower.prim.set_repeat('FM4',1,1)
-    windower.prim.set_visibility('FM4',true)
-	windower.prim.set_position('FM4', iPosition_x + 22, iPosition_y + 155)
-	windower.prim.set_size('FM4', 40, 50)
-	
-	--FMs 5
-	windower.prim.create('FM5')	
-	windower.prim.set_color('FM5', vFM5, vFM5, vFM5, vFM5)	
+	windower.prim.set_repeat('FM4', 1, 1)
+	windower.prim.set_visibility('FM4', true)
+	windower.prim.set_position('FM4', (iPosition_x + 22) * sizeScale, (iPosition_y + 155) * sizeScale)
+	windower.prim.set_size('FM4', FM4Width * sizeScale, FM4Height * sizeScale)
+
+	-- FM5
+	windower.prim.create('FM5')
+	windower.prim.set_color('FM5', vFM5, vFM5, vFM5, vFM5)
 	windower.prim.set_fit_to_texture('FM5', false)
 	windower.prim.set_texture('FM5', windower.addon_path .. 'assets/FM5.png')
-	windower.prim.set_repeat('FM5',1,1)
-    windower.prim.set_visibility('FM5',true)
-	windower.prim.set_position('FM5', iPosition_x + 22, iPosition_y + 155)
-	windower.prim.set_size('FM5', 40, 50)
-	
-	--FMs 5+
-	windower.prim.create('FM6')	
-	windower.prim.set_color('FM6', vFM6, vFM6, vFM6, vFM6)	
+	windower.prim.set_repeat('FM5', 1, 1)
+	windower.prim.set_visibility('FM5', true)
+	windower.prim.set_position('FM5', (iPosition_x + 22) * sizeScale, (iPosition_y + 155) * sizeScale)
+	windower.prim.set_size('FM5', FM5Width * sizeScale, FM5Height * sizeScale)
+
+	-- FM6
+	windower.prim.create('FM6')
+	windower.prim.set_color('FM6', vFM6, vFM6, vFM6, vFM6)
 	windower.prim.set_fit_to_texture('FM6', false)
 	windower.prim.set_texture('FM6', windower.addon_path .. 'assets/FM6.png')
-	windower.prim.set_repeat('FM6',1,1)
-    windower.prim.set_visibility('FM6',true)
-	windower.prim.set_position('FM6', iPosition_x + 22, iPosition_y + 155)
-	windower.prim.set_size('FM6', 50, 50)
+	windower.prim.set_repeat('FM6', 1, 1)
+	windower.prim.set_visibility('FM6', true)
+	windower.prim.set_position('FM6', (iPosition_x + 22) * sizeScale, (iPosition_y + 155) * sizeScale)
+	windower.prim.set_size('FM6', FM6Width * sizeScale, FM6Height * sizeScale)
 end);
+
 
 windower.register_event('prerender', function()
 
